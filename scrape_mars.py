@@ -27,10 +27,9 @@ def scrape():
     # Parse HTML with Beautiful Soup  
     soup = bs(html, "html.parser")
 
-    # Get article title and paragraph text
-    article = soup.find("div", class_='list_text')
-    news_title = article.find("div", class_="content_title").text
-    news_p = article.find("div", class_ ="article_teaser_body").text
+    # Retrieve the latest element that contains news title and news_paragraph
+    news_title = soup.find('div', class_='content_title').find('a').text
+    news_p = soup.find('div', class_='article_teaser_body').text
 
     #
     ### JPL Mars Space Images
